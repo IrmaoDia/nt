@@ -1,0 +1,1338 @@
+{
+  "aviso": "Referências de consumo por pessoa adulta, para uma ceia com vários pratos. Devem ser revisadas por quem cozinha. Gerado a partir de src/data/tiposDePrato.ts e src/data/cardapios.ts (npm run gerar:json).",
+  "regras": {
+    "criancaAte10AnosContaComo": 0.5,
+    "fatorApetite": {
+      "leve": 0.85,
+      "normal": 1,
+      "bem-servido": 1.2
+    },
+    "pessoasEquivalentes": "(adultos + crianças × 0,5) × fator de apetite (bebida alcoólica: só adultos)",
+    "divisaoNoGrupo": "com n pratos do mesmo grupo, cada um fica com porPessoa × (1 + 0.15 × (n − 1)) ÷ n"
+  },
+  "tiposDePrato": [
+    {
+      "id": "carne-com-osso",
+      "nome": "Carne com osso",
+      "icone": "🍖",
+      "grupo": "Carnes",
+      "categoria": "Carnes",
+      "porPessoa": 400,
+      "unidade": "g",
+      "exibicao": "crua",
+      "arredondamento": 100,
+      "exemplos": "pernil, costela, frango inteiro, chester, peru"
+    },
+    {
+      "id": "carne-sem-osso",
+      "nome": "Carne sem osso",
+      "icone": "🥩",
+      "grupo": "Carnes",
+      "categoria": "Carnes",
+      "porPessoa": 300,
+      "unidade": "g",
+      "exibicao": "crua",
+      "arredondamento": 100,
+      "exemplos": "lombo, tender, picanha, filé, lagarto"
+    },
+    {
+      "id": "peixe",
+      "nome": "Peixe ou bacalhau",
+      "icone": "🐟",
+      "grupo": "Carnes",
+      "categoria": "Carnes",
+      "porPessoa": 300,
+      "unidade": "g",
+      "exibicao": "cru (bacalhau já dessalgado)",
+      "arredondamento": 100,
+      "exemplos": "bacalhau, salmão, pescada"
+    },
+    {
+      "id": "arroz",
+      "nome": "Arroz",
+      "icone": "🍚",
+      "grupo": "Acompanhamentos",
+      "categoria": "Mercearia",
+      "porPessoa": 70,
+      "unidade": "g",
+      "exibicao": "de arroz cru",
+      "arredondamento": 100,
+      "embalagem": {
+        "tamanho": 1000,
+        "nome": [
+          "pacote de 1 kg",
+          "pacotes de 1 kg"
+        ]
+      },
+      "nomeCompra": "Arroz",
+      "exemplos": "arroz branco, à grega, com passas, com castanhas"
+    },
+    {
+      "id": "massa",
+      "nome": "Massa ou macarrão",
+      "icone": "🍝",
+      "grupo": "Acompanhamentos",
+      "categoria": "Mercearia",
+      "porPessoa": 80,
+      "unidade": "g",
+      "exibicao": "de massa crua",
+      "arredondamento": 100,
+      "embalagem": {
+        "tamanho": 500,
+        "nome": [
+          "pacote de 500 g",
+          "pacotes de 500 g"
+        ]
+      },
+      "nomeCompra": "Massa (macarrão)",
+      "exemplos": "macarrão ao forno, lasanha, talharim"
+    },
+    {
+      "id": "farofa",
+      "nome": "Farofa",
+      "icone": "🥣",
+      "grupo": "Acompanhamentos",
+      "categoria": "Mercearia",
+      "porPessoa": 35,
+      "unidade": "g",
+      "exibicao": "de farinha",
+      "arredondamento": 100,
+      "embalagem": {
+        "tamanho": 500,
+        "nome": [
+          "pacote de 500 g",
+          "pacotes de 500 g"
+        ]
+      },
+      "nomeCompra": "Farinha de mandioca",
+      "exemplos": "farofa de bacon, de ovos, de frutas secas"
+    },
+    {
+      "id": "acompanhamento-quente",
+      "nome": "Acompanhamento quente",
+      "icone": "🥔",
+      "grupo": "Acompanhamentos",
+      "categoria": "Pratos da mesa",
+      "porPessoa": 150,
+      "unidade": "g",
+      "exibicao": "pronto",
+      "arredondamento": 100,
+      "exemplos": "batata assada, legumes, purê, gratinado"
+    },
+    {
+      "id": "salada-folhas",
+      "nome": "Salada de folhas",
+      "icone": "🥬",
+      "grupo": "Saladas",
+      "categoria": "Hortifrúti",
+      "porPessoa": 50,
+      "unidade": "g",
+      "exibicao": "de folhas",
+      "arredondamento": 50,
+      "exemplos": "alface, rúcula, agrião, mix de folhas"
+    },
+    {
+      "id": "salada-fria",
+      "nome": "Salada fria pronta",
+      "icone": "🥗",
+      "grupo": "Saladas",
+      "categoria": "Pratos da mesa",
+      "porPessoa": 150,
+      "unidade": "g",
+      "exibicao": "pronta",
+      "arredondamento": 100,
+      "exemplos": "maionese, salpicão, salada de batata"
+    },
+    {
+      "id": "sobremesa",
+      "nome": "Sobremesa",
+      "icone": "🍮",
+      "grupo": "Sobremesas",
+      "categoria": "Pratos da mesa",
+      "porPessoa": 1,
+      "unidade": "porcao",
+      "exibicao": "",
+      "arredondamento": 1,
+      "nomeUnidade": [
+        "porção",
+        "porções"
+      ],
+      "exemplos": "pavê, pudim, torta, mousse, rabanada"
+    },
+    {
+      "id": "panetone",
+      "nome": "Panetone ou chocotone",
+      "icone": "🍞",
+      "grupo": "Sobremesas",
+      "categoria": "Mercearia",
+      "porPessoa": 0.125,
+      "unidade": "unidade",
+      "exibicao": "",
+      "arredondamento": 1,
+      "nomeUnidade": [
+        "panetone de 500 g",
+        "panetones de 500 g"
+      ],
+      "exemplos": "panetone, chocotone (1 de 500 g a cada 8 pessoas)"
+    },
+    {
+      "id": "frutas",
+      "nome": "Frutas da ceia",
+      "icone": "🍇",
+      "grupo": "Sobremesas",
+      "categoria": "Hortifrúti",
+      "porPessoa": 100,
+      "unidade": "g",
+      "exibicao": "",
+      "arredondamento": 100,
+      "exemplos": "uvas, frutas secas, nozes"
+    },
+    {
+      "id": "bebida-sem-alcool",
+      "nome": "Refrigerante, suco ou bebida sem álcool",
+      "icone": "🥤",
+      "grupo": "Bebidas",
+      "categoria": "Bebidas",
+      "porPessoa": 500,
+      "unidade": "ml",
+      "exibicao": "",
+      "arredondamento": 500,
+      "embalagem": {
+        "tamanho": 2000,
+        "nome": [
+          "garrafa de 2 litros",
+          "garrafas de 2 litros"
+        ]
+      },
+      "exemplos": "refrigerante, suco, água com gás, ponche sem álcool"
+    },
+    {
+      "id": "espumante",
+      "nome": "Espumante ou vinho",
+      "icone": "🍾",
+      "grupo": "Bebidas",
+      "categoria": "Bebidas",
+      "porPessoa": 187.5,
+      "unidade": "ml",
+      "exibicao": "",
+      "arredondamento": 750,
+      "embalagem": {
+        "tamanho": 750,
+        "nome": [
+          "garrafa de 750 ml",
+          "garrafas de 750 ml"
+        ]
+      },
+      "soAdultos": true,
+      "exemplos": "1 garrafa de 750 ml a cada 4 adultos (crianças não contam)"
+    }
+  ],
+  "cardapiosProntos": [
+    {
+      "id": "economico",
+      "nome": "Econômico",
+      "pratos": [
+        {
+          "id": "frango-assado-batatas",
+          "nome": "Frango inteiro assado com batatas",
+          "tipo": "carne-com-osso",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "4 kg de frango inteiro",
+              "quantidade": 4,
+              "unidade": "kg",
+              "ingrediente": "frango inteiro"
+            },
+            {
+              "texto": "1,5 kg de batata",
+              "quantidade": 1.5,
+              "unidade": "kg",
+              "ingrediente": "batata"
+            },
+            {
+              "texto": "4 cebolas médias",
+              "quantidade": 4,
+              "unidade": "unidade",
+              "ingrediente": "cebolas médias"
+            },
+            {
+              "texto": "12 dentes de alho",
+              "quantidade": 12,
+              "unidade": "dente",
+              "ingrediente": "alho"
+            },
+            {
+              "texto": "Suco de 3 limões",
+              "quantidade": 3,
+              "unidade": "unidade",
+              "ingrediente": "limões (suco)"
+            },
+            {
+              "texto": "100 ml de óleo",
+              "quantidade": 100,
+              "unidade": "ml",
+              "ingrediente": "óleo"
+            },
+            {
+              "texto": "2 colheres de sopa de sal",
+              "quantidade": 2,
+              "unidade": "colher-sopa",
+              "ingrediente": "sal"
+            },
+            {
+              "texto": "1 colher de sopa de páprica doce",
+              "quantidade": 1,
+              "unidade": "colher-sopa",
+              "ingrediente": "páprica doce"
+            },
+            {
+              "texto": "1 colher de chá de pimenta-do-reino",
+              "quantidade": 1,
+              "unidade": "colher-cha",
+              "ingrediente": "pimenta-do-reino"
+            }
+          ]
+        },
+        {
+          "id": "arroz-a-grega",
+          "nome": "Arroz à grega",
+          "tipo": "arroz",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "700 g de arroz",
+              "quantidade": 700,
+              "unidade": "g",
+              "ingrediente": "arroz"
+            },
+            {
+              "texto": "2 cenouras médias",
+              "quantidade": 2,
+              "unidade": "unidade",
+              "ingrediente": "cenouras médias"
+            },
+            {
+              "texto": "1 lata de ervilha",
+              "quantidade": 1,
+              "unidade": "lata",
+              "ingrediente": "ervilha"
+            },
+            {
+              "texto": "1 lata de milho verde",
+              "quantidade": 1,
+              "unidade": "lata",
+              "ingrediente": "milho verde"
+            },
+            {
+              "texto": "1 pimentão vermelho",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "pimentão vermelho"
+            },
+            {
+              "texto": "1 cebola média",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "cebola média"
+            },
+            {
+              "texto": "4 dentes de alho",
+              "quantidade": 4,
+              "unidade": "dente",
+              "ingrediente": "alho"
+            },
+            {
+              "texto": "3 colheres de sopa de óleo",
+              "quantidade": 3,
+              "unidade": "colher-sopa",
+              "ingrediente": "óleo"
+            },
+            {
+              "texto": "1 colher de sopa de sal",
+              "quantidade": 1,
+              "unidade": "colher-sopa",
+              "ingrediente": "sal"
+            }
+          ]
+        },
+        {
+          "id": "farofa-bacon",
+          "nome": "Farofa de bacon",
+          "tipo": "farofa",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "350 g de farinha de mandioca",
+              "quantidade": 350,
+              "unidade": "g",
+              "ingrediente": "farinha de mandioca"
+            },
+            {
+              "texto": "150 g de bacon em cubos",
+              "quantidade": 150,
+              "unidade": "g",
+              "ingrediente": "bacon em cubos"
+            },
+            {
+              "texto": "1 cebola média",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "cebola média"
+            },
+            {
+              "texto": "3 colheres de sopa de manteiga",
+              "quantidade": 3,
+              "unidade": "colher-sopa",
+              "ingrediente": "manteiga"
+            },
+            {
+              "texto": "3 dentes de alho",
+              "quantidade": 3,
+              "unidade": "dente",
+              "ingrediente": "alho"
+            },
+            {
+              "texto": "Sal a gosto",
+              "quantidade": null,
+              "unidade": "a-gosto",
+              "ingrediente": "Sal"
+            },
+            {
+              "texto": "Cheiro-verde a gosto",
+              "quantidade": null,
+              "unidade": "a-gosto",
+              "ingrediente": "Cheiro-verde"
+            }
+          ]
+        },
+        {
+          "id": "salpicao-frango",
+          "nome": "Salpicão de frango",
+          "tipo": "salada-fria",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "700 g de peito de frango",
+              "quantidade": 700,
+              "unidade": "g",
+              "ingrediente": "peito de frango"
+            },
+            {
+              "texto": "350 g de maionese",
+              "quantidade": 350,
+              "unidade": "g",
+              "ingrediente": "maionese"
+            },
+            {
+              "texto": "2 cenouras médias",
+              "quantidade": 2,
+              "unidade": "unidade",
+              "ingrediente": "cenouras médias"
+            },
+            {
+              "texto": "1 caixinha de creme de leite",
+              "quantidade": 1,
+              "unidade": "caixinha",
+              "ingrediente": "creme de leite"
+            },
+            {
+              "texto": "1 lata de milho verde",
+              "quantidade": 1,
+              "unidade": "lata",
+              "ingrediente": "milho verde"
+            },
+            {
+              "texto": "100 g de batata palha",
+              "quantidade": 100,
+              "unidade": "g",
+              "ingrediente": "batata palha"
+            },
+            {
+              "texto": "1 maçã",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "maçã"
+            },
+            {
+              "texto": "1 cebola pequena",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "cebola pequena"
+            },
+            {
+              "texto": "Suco de 1/2 limão",
+              "quantidade": 0.5,
+              "unidade": "unidade",
+              "ingrediente": "limão (suco)"
+            },
+            {
+              "texto": "Sal a gosto",
+              "quantidade": null,
+              "unidade": "a-gosto",
+              "ingrediente": "Sal"
+            },
+            {
+              "texto": "Cheiro-verde a gosto",
+              "quantidade": null,
+              "unidade": "a-gosto",
+              "ingrediente": "Cheiro-verde"
+            }
+          ]
+        },
+        {
+          "id": "pave-bolacha",
+          "nome": "Pavê de bolacha",
+          "tipo": "sobremesa",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "1 lata de leite condensado",
+              "quantidade": 1,
+              "unidade": "lata",
+              "ingrediente": "leite condensado"
+            },
+            {
+              "texto": "600 ml de leite",
+              "quantidade": 600,
+              "unidade": "ml",
+              "ingrediente": "leite"
+            },
+            {
+              "texto": "2 ovos",
+              "quantidade": 2,
+              "unidade": "unidade",
+              "ingrediente": "ovos"
+            },
+            {
+              "texto": "2 colheres de sopa de amido de milho",
+              "quantidade": 2,
+              "unidade": "colher-sopa",
+              "ingrediente": "amido de milho"
+            },
+            {
+              "texto": "1 caixinha de creme de leite",
+              "quantidade": 1,
+              "unidade": "caixinha",
+              "ingrediente": "creme de leite"
+            },
+            {
+              "texto": "200 g de bolacha maisena",
+              "quantidade": 200,
+              "unidade": "g",
+              "ingrediente": "bolacha maisena"
+            },
+            {
+              "texto": "2 colheres de sopa de chocolate em pó",
+              "quantidade": 2,
+              "unidade": "colher-sopa",
+              "ingrediente": "chocolate em pó"
+            }
+          ]
+        },
+        {
+          "id": "refresco-natalino",
+          "nome": "Refresco natalino de frutas",
+          "tipo": "bebida-sem-alcool",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "1 litro de suco de uva concentrado",
+              "quantidade": 1,
+              "unidade": "l",
+              "ingrediente": "suco de uva concentrado"
+            },
+            {
+              "texto": "4 litros de água gelada",
+              "quantidade": 4,
+              "unidade": "l",
+              "ingrediente": "água gelada"
+            },
+            {
+              "texto": "5 laranjas",
+              "quantidade": 5,
+              "unidade": "unidade",
+              "ingrediente": "laranjas"
+            },
+            {
+              "texto": "3 limões",
+              "quantidade": 3,
+              "unidade": "unidade",
+              "ingrediente": "limões"
+            },
+            {
+              "texto": "1 xícara de açúcar",
+              "quantidade": 1,
+              "unidade": "xicara",
+              "ingrediente": "açúcar"
+            },
+            {
+              "texto": "1,5 kg de gelo",
+              "quantidade": 1.5,
+              "unidade": "kg",
+              "ingrediente": "gelo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tradicional",
+      "nome": "Tradicional",
+      "pratos": [
+        {
+          "id": "pernil-cerveja-preta",
+          "nome": "Pernil na cerveja preta",
+          "tipo": "carne-com-osso",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "4 kg de pernil suíno com osso",
+              "quantidade": 4,
+              "unidade": "kg",
+              "ingrediente": "pernil suíno com osso"
+            },
+            {
+              "texto": "800 ml de cerveja preta",
+              "quantidade": 800,
+              "unidade": "ml",
+              "ingrediente": "cerveja preta"
+            },
+            {
+              "texto": "3 cebolas médias",
+              "quantidade": 3,
+              "unidade": "unidade",
+              "ingrediente": "cebolas médias"
+            },
+            {
+              "texto": "15 dentes de alho",
+              "quantidade": 15,
+              "unidade": "dente",
+              "ingrediente": "alho"
+            },
+            {
+              "texto": "Suco de 3 laranjas",
+              "quantidade": 3,
+              "unidade": "unidade",
+              "ingrediente": "laranjas (suco)"
+            },
+            {
+              "texto": "Suco de 2 limões",
+              "quantidade": 2,
+              "unidade": "unidade",
+              "ingrediente": "limões (suco)"
+            },
+            {
+              "texto": "4 colheres de sopa de óleo",
+              "quantidade": 4,
+              "unidade": "colher-sopa",
+              "ingrediente": "óleo"
+            },
+            {
+              "texto": "2 colheres de sopa de sal",
+              "quantidade": 2,
+              "unidade": "colher-sopa",
+              "ingrediente": "sal"
+            },
+            {
+              "texto": "1 colher de sopa de páprica doce",
+              "quantidade": 1,
+              "unidade": "colher-sopa",
+              "ingrediente": "páprica doce"
+            },
+            {
+              "texto": "1 colher de chá de pimenta-do-reino",
+              "quantidade": 1,
+              "unidade": "colher-cha",
+              "ingrediente": "pimenta-do-reino"
+            },
+            {
+              "texto": "4 folhas de louro",
+              "quantidade": 4,
+              "unidade": "unidade",
+              "ingrediente": "folhas de louro"
+            }
+          ]
+        },
+        {
+          "id": "arroz-com-passas",
+          "nome": "Arroz com passas",
+          "tipo": "arroz",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "700 g de arroz",
+              "quantidade": 700,
+              "unidade": "g",
+              "ingrediente": "arroz"
+            },
+            {
+              "texto": "100 g de uva-passa",
+              "quantidade": 100,
+              "unidade": "g",
+              "ingrediente": "uva-passa"
+            },
+            {
+              "texto": "1 cebola média",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "cebola média"
+            },
+            {
+              "texto": "3 dentes de alho",
+              "quantidade": 3,
+              "unidade": "dente",
+              "ingrediente": "alho"
+            },
+            {
+              "texto": "3 colheres de sopa de óleo",
+              "quantidade": 3,
+              "unidade": "colher-sopa",
+              "ingrediente": "óleo"
+            },
+            {
+              "texto": "1 colher de sopa de manteiga",
+              "quantidade": 1,
+              "unidade": "colher-sopa",
+              "ingrediente": "manteiga"
+            },
+            {
+              "texto": "1 colher de sopa de sal",
+              "quantidade": 1,
+              "unidade": "colher-sopa",
+              "ingrediente": "sal"
+            }
+          ]
+        },
+        {
+          "id": "farofa-bacon-ovos",
+          "nome": "Farofa de bacon e ovos",
+          "tipo": "farofa",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "350 g de farinha de mandioca",
+              "quantidade": 350,
+              "unidade": "g",
+              "ingrediente": "farinha de mandioca"
+            },
+            {
+              "texto": "150 g de bacon em cubos",
+              "quantidade": 150,
+              "unidade": "g",
+              "ingrediente": "bacon em cubos"
+            },
+            {
+              "texto": "3 ovos",
+              "quantidade": 3,
+              "unidade": "unidade",
+              "ingrediente": "ovos"
+            },
+            {
+              "texto": "1 cebola média",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "cebola média"
+            },
+            {
+              "texto": "3 colheres de sopa de manteiga",
+              "quantidade": 3,
+              "unidade": "colher-sopa",
+              "ingrediente": "manteiga"
+            },
+            {
+              "texto": "3 dentes de alho",
+              "quantidade": 3,
+              "unidade": "dente",
+              "ingrediente": "alho"
+            },
+            {
+              "texto": "Sal a gosto",
+              "quantidade": null,
+              "unidade": "a-gosto",
+              "ingrediente": "Sal"
+            },
+            {
+              "texto": "Cheiro-verde a gosto",
+              "quantidade": null,
+              "unidade": "a-gosto",
+              "ingrediente": "Cheiro-verde"
+            }
+          ]
+        },
+        {
+          "id": "maionese-batata",
+          "nome": "Maionese de batata",
+          "tipo": "salada-fria",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "1,1 kg de batata",
+              "quantidade": 1.1,
+              "unidade": "kg",
+              "ingrediente": "batata"
+            },
+            {
+              "texto": "2 cenouras médias",
+              "quantidade": 2,
+              "unidade": "unidade",
+              "ingrediente": "cenouras médias"
+            },
+            {
+              "texto": "100 g de ervilha",
+              "quantidade": 100,
+              "unidade": "g",
+              "ingrediente": "ervilha"
+            },
+            {
+              "texto": "300 g de maionese",
+              "quantidade": 300,
+              "unidade": "g",
+              "ingrediente": "maionese"
+            },
+            {
+              "texto": "3 ovos",
+              "quantidade": 3,
+              "unidade": "unidade",
+              "ingrediente": "ovos"
+            },
+            {
+              "texto": "1/2 cebola",
+              "quantidade": 0.5,
+              "unidade": "unidade",
+              "ingrediente": "cebola"
+            },
+            {
+              "texto": "Suco de 1/2 limão",
+              "quantidade": 0.5,
+              "unidade": "unidade",
+              "ingrediente": "limão (suco)"
+            },
+            {
+              "texto": "2 colheres de sopa de azeite",
+              "quantidade": 2,
+              "unidade": "colher-sopa",
+              "ingrediente": "azeite"
+            },
+            {
+              "texto": "Sal a gosto",
+              "quantidade": null,
+              "unidade": "a-gosto",
+              "ingrediente": "Sal"
+            },
+            {
+              "texto": "Cheiro-verde a gosto",
+              "quantidade": null,
+              "unidade": "a-gosto",
+              "ingrediente": "Cheiro-verde"
+            }
+          ]
+        },
+        {
+          "id": "rabanada-forno",
+          "nome": "Rabanada de forno",
+          "tipo": "sobremesa",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "5 pães franceses amanhecidos",
+              "quantidade": 5,
+              "unidade": "unidade",
+              "ingrediente": "pães franceses amanhecidos"
+            },
+            {
+              "texto": "600 ml de leite",
+              "quantidade": 600,
+              "unidade": "ml",
+              "ingrediente": "leite"
+            },
+            {
+              "texto": "1/2 lata de leite condensado",
+              "quantidade": 0.5,
+              "unidade": "lata",
+              "ingrediente": "leite condensado"
+            },
+            {
+              "texto": "3 ovos",
+              "quantidade": 3,
+              "unidade": "unidade",
+              "ingrediente": "ovos"
+            },
+            {
+              "texto": "3/4 de xícara de açúcar",
+              "quantidade": 0.75,
+              "unidade": "xicara",
+              "ingrediente": "açúcar"
+            },
+            {
+              "texto": "1 colher de sopa de canela em pó",
+              "quantidade": 1,
+              "unidade": "colher-sopa",
+              "ingrediente": "canela em pó"
+            },
+            {
+              "texto": "3 colheres de sopa de manteiga",
+              "quantidade": 3,
+              "unidade": "colher-sopa",
+              "ingrediente": "manteiga"
+            }
+          ]
+        },
+        {
+          "id": "pave-chocolate",
+          "nome": "Pavê de chocolate",
+          "tipo": "sobremesa",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "1 lata de leite condensado",
+              "quantidade": 1,
+              "unidade": "lata",
+              "ingrediente": "leite condensado"
+            },
+            {
+              "texto": "600 ml de leite",
+              "quantidade": 600,
+              "unidade": "ml",
+              "ingrediente": "leite"
+            },
+            {
+              "texto": "2 ovos",
+              "quantidade": 2,
+              "unidade": "unidade",
+              "ingrediente": "ovos"
+            },
+            {
+              "texto": "2 colheres de sopa de amido de milho",
+              "quantidade": 2,
+              "unidade": "colher-sopa",
+              "ingrediente": "amido de milho"
+            },
+            {
+              "texto": "1/2 xícara de chocolate em pó",
+              "quantidade": 0.5,
+              "unidade": "xicara",
+              "ingrediente": "chocolate em pó"
+            },
+            {
+              "texto": "2 caixinhas de creme de leite",
+              "quantidade": 2,
+              "unidade": "caixinha",
+              "ingrediente": "creme de leite"
+            },
+            {
+              "texto": "200 g de bolacha maisena",
+              "quantidade": 200,
+              "unidade": "g",
+              "ingrediente": "bolacha maisena"
+            },
+            {
+              "texto": "50 g de chocolate granulado",
+              "quantidade": 50,
+              "unidade": "g",
+              "ingrediente": "chocolate granulado"
+            },
+            {
+              "texto": "1 colher de sopa de manteiga",
+              "quantidade": 1,
+              "unidade": "colher-sopa",
+              "ingrediente": "manteiga"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "caprichado",
+      "nome": "Caprichado",
+      "pratos": [
+        {
+          "id": "pernil-cerveja-preta-caprichado",
+          "nome": "Pernil na cerveja preta",
+          "tipo": "carne-com-osso",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "4 kg de pernil suíno com osso",
+              "quantidade": 4,
+              "unidade": "kg",
+              "ingrediente": "pernil suíno com osso"
+            },
+            {
+              "texto": "800 ml de cerveja preta",
+              "quantidade": 800,
+              "unidade": "ml",
+              "ingrediente": "cerveja preta"
+            },
+            {
+              "texto": "3 cebolas médias",
+              "quantidade": 3,
+              "unidade": "unidade",
+              "ingrediente": "cebolas médias"
+            },
+            {
+              "texto": "15 dentes de alho",
+              "quantidade": 15,
+              "unidade": "dente",
+              "ingrediente": "alho"
+            },
+            {
+              "texto": "Suco de 3 laranjas",
+              "quantidade": 3,
+              "unidade": "unidade",
+              "ingrediente": "laranjas (suco)"
+            },
+            {
+              "texto": "Suco de 2 limões",
+              "quantidade": 2,
+              "unidade": "unidade",
+              "ingrediente": "limões (suco)"
+            },
+            {
+              "texto": "4 colheres de sopa de óleo",
+              "quantidade": 4,
+              "unidade": "colher-sopa",
+              "ingrediente": "óleo"
+            },
+            {
+              "texto": "2 colheres de sopa de sal",
+              "quantidade": 2,
+              "unidade": "colher-sopa",
+              "ingrediente": "sal"
+            },
+            {
+              "texto": "1 colher de sopa de páprica doce",
+              "quantidade": 1,
+              "unidade": "colher-sopa",
+              "ingrediente": "páprica doce"
+            },
+            {
+              "texto": "1 colher de chá de pimenta-do-reino",
+              "quantidade": 1,
+              "unidade": "colher-cha",
+              "ingrediente": "pimenta-do-reino"
+            },
+            {
+              "texto": "4 folhas de louro",
+              "quantidade": 4,
+              "unidade": "unidade",
+              "ingrediente": "folhas de louro"
+            }
+          ]
+        },
+        {
+          "id": "tender-glaceado",
+          "nome": "Tender glaceado com laranja",
+          "tipo": "carne-sem-osso",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "3 kg de tender",
+              "quantidade": 3,
+              "unidade": "kg",
+              "ingrediente": "tender"
+            },
+            {
+              "texto": "Suco de 4 laranjas",
+              "quantidade": 4,
+              "unidade": "unidade",
+              "ingrediente": "laranjas (suco)"
+            },
+            {
+              "texto": "1 xícara de açúcar mascavo",
+              "quantidade": 1,
+              "unidade": "xicara",
+              "ingrediente": "açúcar mascavo"
+            },
+            {
+              "texto": "1/2 xícara de mostarda",
+              "quantidade": 0.5,
+              "unidade": "xicara",
+              "ingrediente": "mostarda"
+            },
+            {
+              "texto": "1/2 xícara de mel",
+              "quantidade": 0.5,
+              "unidade": "xicara",
+              "ingrediente": "mel"
+            },
+            {
+              "texto": "1 colher de sopa de cravo-da-índia",
+              "quantidade": 1,
+              "unidade": "colher-sopa",
+              "ingrediente": "cravo-da-índia"
+            }
+          ]
+        },
+        {
+          "id": "arroz-natalino-castanhas",
+          "nome": "Arroz natalino com castanhas",
+          "tipo": "arroz",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "700 g de arroz",
+              "quantidade": 700,
+              "unidade": "g",
+              "ingrediente": "arroz"
+            },
+            {
+              "texto": "100 g de castanha-de-caju",
+              "quantidade": 100,
+              "unidade": "g",
+              "ingrediente": "castanha-de-caju"
+            },
+            {
+              "texto": "50 g de uva-passa",
+              "quantidade": 50,
+              "unidade": "g",
+              "ingrediente": "uva-passa"
+            },
+            {
+              "texto": "1 cenoura média",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "cenoura média"
+            },
+            {
+              "texto": "1 cebola média",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "cebola média"
+            },
+            {
+              "texto": "3 dentes de alho",
+              "quantidade": 3,
+              "unidade": "dente",
+              "ingrediente": "alho"
+            },
+            {
+              "texto": "3 colheres de sopa de manteiga",
+              "quantidade": 3,
+              "unidade": "colher-sopa",
+              "ingrediente": "manteiga"
+            },
+            {
+              "texto": "1 colher de sopa de sal",
+              "quantidade": 1,
+              "unidade": "colher-sopa",
+              "ingrediente": "sal"
+            },
+            {
+              "texto": "Cheiro-verde a gosto",
+              "quantidade": null,
+              "unidade": "a-gosto",
+              "ingrediente": "Cheiro-verde"
+            }
+          ]
+        },
+        {
+          "id": "farofa-frutas-secas",
+          "nome": "Farofa de frutas secas",
+          "tipo": "farofa",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "350 g de farinha de mandioca",
+              "quantidade": 350,
+              "unidade": "g",
+              "ingrediente": "farinha de mandioca"
+            },
+            {
+              "texto": "80 g de manteiga",
+              "quantidade": 80,
+              "unidade": "g",
+              "ingrediente": "manteiga"
+            },
+            {
+              "texto": "80 g de damasco seco",
+              "quantidade": 80,
+              "unidade": "g",
+              "ingrediente": "damasco seco"
+            },
+            {
+              "texto": "60 g de uva-passa",
+              "quantidade": 60,
+              "unidade": "g",
+              "ingrediente": "uva-passa"
+            },
+            {
+              "texto": "60 g de ameixa seca",
+              "quantidade": 60,
+              "unidade": "g",
+              "ingrediente": "ameixa seca"
+            },
+            {
+              "texto": "1 cebola média",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "cebola média"
+            },
+            {
+              "texto": "Sal a gosto",
+              "quantidade": null,
+              "unidade": "a-gosto",
+              "ingrediente": "Sal"
+            },
+            {
+              "texto": "Cheiro-verde a gosto",
+              "quantidade": null,
+              "unidade": "a-gosto",
+              "ingrediente": "Cheiro-verde"
+            }
+          ]
+        },
+        {
+          "id": "salada-folhas-manga",
+          "nome": "Salada de folhas com manga",
+          "tipo": "salada-folhas",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "2 pés de alface crespa",
+              "quantidade": 2,
+              "unidade": "unidade",
+              "ingrediente": "pés de alface crespa"
+            },
+            {
+              "texto": "1 maço de rúcula",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "maço de rúcula"
+            },
+            {
+              "texto": "2 mangas",
+              "quantidade": 2,
+              "unidade": "unidade",
+              "ingrediente": "mangas"
+            },
+            {
+              "texto": "250 g de tomate-cereja",
+              "quantidade": 250,
+              "unidade": "g",
+              "ingrediente": "tomate-cereja"
+            },
+            {
+              "texto": "1 cebola roxa pequena",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "cebola roxa pequena"
+            },
+            {
+              "texto": "80 ml de azeite",
+              "quantidade": 80,
+              "unidade": "ml",
+              "ingrediente": "azeite"
+            },
+            {
+              "texto": "Suco de 1 limão",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "limão (suco)"
+            },
+            {
+              "texto": "Sal a gosto",
+              "quantidade": null,
+              "unidade": "a-gosto",
+              "ingrediente": "Sal"
+            }
+          ]
+        },
+        {
+          "id": "torta-limao",
+          "nome": "Torta de limão",
+          "tipo": "sobremesa",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "200 g de bolacha maisena",
+              "quantidade": 200,
+              "unidade": "g",
+              "ingrediente": "bolacha maisena"
+            },
+            {
+              "texto": "100 g de manteiga",
+              "quantidade": 100,
+              "unidade": "g",
+              "ingrediente": "manteiga"
+            },
+            {
+              "texto": "1 lata de leite condensado",
+              "quantidade": 1,
+              "unidade": "lata",
+              "ingrediente": "leite condensado"
+            },
+            {
+              "texto": "1 caixinha de creme de leite",
+              "quantidade": 1,
+              "unidade": "caixinha",
+              "ingrediente": "creme de leite"
+            },
+            {
+              "texto": "5 limões",
+              "quantidade": 5,
+              "unidade": "unidade",
+              "ingrediente": "limões"
+            },
+            {
+              "texto": "3 claras de ovo",
+              "quantidade": 3,
+              "unidade": "unidade",
+              "ingrediente": "claras de ovo"
+            },
+            {
+              "texto": "6 colheres de sopa de açúcar",
+              "quantidade": 6,
+              "unidade": "colher-sopa",
+              "ingrediente": "açúcar"
+            }
+          ]
+        },
+        {
+          "id": "ponche-sem-alcool",
+          "nome": "Ponche de frutas sem álcool",
+          "tipo": "bebida-sem-alcool",
+          "serve": 10,
+          "ingredientes": [
+            {
+              "texto": "2 litros de suco de uva integral",
+              "quantidade": 2,
+              "unidade": "l",
+              "ingrediente": "suco de uva integral"
+            },
+            {
+              "texto": "2 litros de refrigerante soda limonada",
+              "quantidade": 2,
+              "unidade": "l",
+              "ingrediente": "refrigerante soda limonada"
+            },
+            {
+              "texto": "2 maçãs",
+              "quantidade": 2,
+              "unidade": "unidade",
+              "ingrediente": "maçãs"
+            },
+            {
+              "texto": "3 laranjas",
+              "quantidade": 3,
+              "unidade": "unidade",
+              "ingrediente": "laranjas"
+            },
+            {
+              "texto": "1 abacaxi",
+              "quantidade": 1,
+              "unidade": "unidade",
+              "ingrediente": "abacaxi"
+            },
+            {
+              "texto": "1,5 kg de gelo",
+              "quantidade": 1.5,
+              "unidade": "kg",
+              "ingrediente": "gelo"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-creme-escuro font-corpo text-base text-grafite antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-titulo;
+  }
+  input,
+  button,
+  select {
+    font: inherit;
+  }
+  :focus-visible {
+    outline: 3px solid #c9a227;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .cartao {
+    @apply rounded-2xl border border-creme-escuro bg-white p-5 shadow-cartao;
+  }
+  .titulo-secao {
+    @apply text-2xl font-bold leading-tight text-oliva-escuro;
+  }
+  .botao-principal {
+    @apply flex min-h-[64px] w-full items-center justify-center rounded-full bg-cta px-6 text-center text-xl font-extrabold uppercase tracking-wide text-white shadow-[0_5px_0_#1F7438] transition active:translate-y-1 active:shadow-[0_1px_0_#1F7438] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .botao-secundario {
+    @apply flex min-h-[56px] w-full items-center justify-center gap-3 rounded-full px-5 text-lg font-bold transition active:translate-y-0.5;
+  }
+}
+
+.lampada {
+  animation: brilho 2.6s ease-in-out infinite;
+}
+.lampada:nth-of-type(3n + 2) {
+  animation-delay: 0.8s;
+}
+.lampada:nth-of-type(3n) {
+  animation-delay: 1.6s;
+}
+@keyframes brilho {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lampada {
+    animation: none;
+  }
+}
+
+@media print {
+  @page {
+    margin: 12mm;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+}

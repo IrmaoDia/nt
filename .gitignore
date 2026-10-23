@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.vercel/
+*.log
+
+# Pacotes originais de backup; o projeto atualizado fica nos arquivos extraídos.
+/Ceia-Sem-Erro-Landing.zip
+/Ceia-Sem-Erro-Mockups.zip
